@@ -1,0 +1,38 @@
+.box{
+    padding: 16px;
+    margin: 20px;
+    border: 1px;
+    border-radius: 15px;
+    border-color: #cccccc;
+    border-style: solid;
+}
+a{
+    padding: 5px;
+    margin: 0px;
+}
+table{
+    width: 100%;
+    padding: 10px;
+}
+tr{
+    width: 100%;
+
+}
+td{
+  padding: 10px;
+  width: 33%;  
+  border: 0px;
+  border-right: 1px;
+  border-style: solid;
+}
+td:hover{
+    background-color: rgb(233, 49, 178);
+    color: white;
+    font-weight: 700;
+ }
+td:last-child{
+    border-right: 0px;
+}
+.list-group-item{
+    padding: 4px;
+}

@@ -8,5 +8,8 @@
     "start": "electron ."
   },
   "author": "Kate Ross and Jason Penman",
-  "license": "ISC"
+  "license": "MIT",
+  "devDependencies": {
+    "electron-prebuilt": "^1.4.13"
+  }
 }
