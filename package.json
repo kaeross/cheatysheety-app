@@ -1,0 +1,12 @@
+{
+  "name": "cheatysheety-app",
+  "version": "1.0.0",
+  "description": "An mjml cheatsheet desktop app",
+  "main": "main.js",
+  "scripts": {
+    "test": "test",
+    "start": "electron ."
+  },
+  "author": "Kate Ross and Jason Penman",
+  "license": "ISC"
+}
