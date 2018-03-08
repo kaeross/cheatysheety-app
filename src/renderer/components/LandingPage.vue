@@ -7,16 +7,42 @@
                     <li
                     v-for="(value, key, index) in csData"
                     :key="key"
-                    :class="{ 'active' : activeIndex === index}" 
+                    :class="{ 'active' : activeComponentIndex === index}" 
                     @click="showAttributes(value, index)"
                     >
                       {{ key }}</li>
                 </ul>
             </div>
+            <div class="section" id="mj-attributes">
+                <h3>Attributes</h3>
+                <ul>
+                    <li 
+                    :class="{ 'active' : activeAttributeIndex === 0}" 
+                    @click="showComponents('',0)">CSS Class</li>
+                    <li 
+                    :class="{ 'active' : activeAttributeIndex === 1}" 
+                    @click="showComponents('',1)">Background</li>
+                    <li 
+                    :class="{ 'active' : activeAttributeIndex === 2}" 
+                    @click="showComponents('',2)">Dimensions</li>
+                    <li 
+                    :class="{ 'active' : activeAttributeIndex === 3}" 
+                    @click="showComponents('',3)">Border</li>
+                    <li 
+                    :class="{ 'active' : activeAttributeIndex === 4}" 
+                    @click="showComponents('',4)">Spacing</li>
+                    <li 
+                    :class="{ 'active' : activeAttributeIndex === 5}" 
+                    @click="showComponents('',5)">Links</li>
+                    <li 
+                    :class="{ 'active' : activeAttributeIndex === 6}" 
+                    @click="showComponents('',6)">Text</li>
+                </ul>
+            </div>
         </div>
         <div class="col-sm-8 pt-5">
             <title-text v-if="!showAttributeTitle"></title-text>
-            <mjml-value :showAttributeTitle="showAttributeTitle" :propObj="mjmlObj"></mjml-value>
+            <mjml-value :showAttributeTitle="showAttributeTitle" :propObj="mjmlAttrObj"></mjml-value>
         </div>
     </div>
 </template>
@@ -30,9 +56,12 @@
     data() {
       return {
         csData: json,
-        mjmlObj: {},
+        mjmlAttrObj: {},
+        mjmlComponentObj: {},
         showAttributeTitle: false,
-        activeIndex: null
+        showComponentTitle: false,
+        activeComponentIndex: null,
+        activeAttributeIndex: null
       };
     },
     components: {
@@ -41,9 +70,19 @@
     },
     methods: {
       showAttributes: function (attributes, itemIndex) {
-        this.mjmlObj = attributes;
-        this.showAttributeTitle = true;
-        this.activeIndex = itemIndex;
+        this.mjmlAttrObj = attributes;
+        this.showAttributeTitle = true;   
+        // set active item and remove active class from attribute list
+        this.activeComponentIndex = itemIndex;
+        this.activeAttributeIndex = null;
+      },
+      showComponents: function (indexRange, itemIndex) {
+        this.showComponentTitle = true;
+        // set active item and remove active class from component list
+        this.activeComponentIndex = null;
+        this.activeAttributeIndex = itemIndex;
+        // Loop through each object in this.csData and check if value is true in index range
+          // if true display key
       }
     }
   };
@@ -60,7 +99,8 @@
     cursor:-webkit-grabbing;
     cursor: pointer;
   }
-  #mj-components li {
+  #mj-components li,
+  #mj-attributes li {
     text-align: right;
     padding-right: 1em;
   }
