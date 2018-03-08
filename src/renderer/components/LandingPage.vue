@@ -4,13 +4,19 @@
             <div class="section" id="mj-components">
                 <h3>Components</h3>
                 <ul>
-                    <li v-for="(value, key, index) in csData" v-bind:key="key" v-on:click="showAttributes(value)">{{index}} {{ key }}</li>
+                    <li
+                    v-for="(value, key, index) in csData"
+                    :key="key"
+                    :class="{ 'active' : activeIndex === index}" 
+                    @click="showAttributes(value, index)"
+                    >
+                      {{ key }}</li>
                 </ul>
             </div>
         </div>
         <div class="col-sm-8 pt-5">
-            <title-text></title-text>
-            <mjml-value :propObj="mjmlObj"></mjml-value>
+            <title-text v-if="!showAttributeTitle"></title-text>
+            <mjml-value :showAttributeTitle="showAttributeTitle" :propObj="mjmlObj"></mjml-value>
         </div>
     </div>
 </template>
@@ -24,7 +30,9 @@
     data() {
       return {
         csData: json,
-        mjmlObj: {}
+        mjmlObj: {},
+        showAttributeTitle: false,
+        activeIndex: null
       };
     },
     components: {
@@ -32,8 +40,10 @@
       MjmlValue
     },
     methods: {
-      showAttributes: function (attributes) {
+      showAttributes: function (attributes, itemIndex) {
         this.mjmlObj = attributes;
+        this.showAttributeTitle = true;
+        this.activeIndex = itemIndex;
       }
     }
   };
@@ -42,6 +52,15 @@
 <style>
   li {
     list-style: none;
+  }
+  li.active {
+    font-weight: 700
+  }
+  li:hover {
+    cursor:-webkit-grabbing;
+    cursor: pointer;
+  }
+  #mj-components li {
     text-align: right;
     padding-right: 1em;
   }
