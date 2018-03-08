@@ -4,7 +4,7 @@
             <div class="section" id="mj-components">
                 <h3>Components</h3>
                 <ul>
-                    <li v-for="(value, key, index) in csData">{{ key }}</li>
+                    <li v-for="(value, key, index) in csData" v-bind:key="key" v-on:click="showAttributes(value)">{{index}} {{ key }}</li>
                 </ul>
             </div>
         </div>
@@ -23,12 +23,18 @@
     name: 'LandingPage',
     data() {
       return {
-        csData: json
+        csData: json,
+        mjmlObj: {}
       };
     },
     components: {
       TitleText,
       MjmlValue
+    },
+    methods: {
+      showAttributes: function (attributes) {
+        this.mjmlObj = attributes;
+      }
     }
   };
 </script>

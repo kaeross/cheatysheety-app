@@ -2,7 +2,7 @@
   <div>
       <h3>Attributes</h3>
       <ul>
-          <li v-for="(value, key) in propObj" >{{ value }}</li>
+          <li v-for="(value, key) in propObj" >{{ key }} {{value}}</li>
       </ul>
   </div>
 </template>
