@@ -1,36 +1,42 @@
 <template>
-    <div :class="main-app" class="row">
-        <div class="col-sm-3 sidebar pt-5">
-            <div class="section">
+    <div class="row">
+        <div class="col-sm-4 sidebar pt-5">
+            <div class="section" id="mj-components">
                 <h3>Components</h3>
                 <ul>
-                    <li v-for="(value, key) in csData">{{key}}</li>
+                    <li v-for="(value, key, index) in csData">{{ key }}</li>
                 </ul>
             </div>
-            <mj-component-list />
         </div>
-        <div class="col-sm-9 pt-5">
-            <h1>The Cheaty Sheety app </h1>
-            <p>All the answers to your mjml questions…</p>
+        <div class="col-sm-8 pt-5">
+            <title-text></title-text>
+            <mjml-value :propObj="mjmlObj"></mjml-value>
         </div>
     </div>
 </template>
 
 <script>
-import json from "../assets/cheatsheet.json";
-export default {
-  data() {
-    return {
-      csData: json
-    };
-  }
-};
+  import TitleText from "./LandingPage/TitleText";
+  import MjmlValue from "./LandingPage/MjmlValues";
+  import json from "../assets/cheatsheet.json";
+  export default {
+    name: 'LandingPage',
+    data() {
+      return {
+        csData: json
+      };
+    },
+    components: {
+      TitleText,
+      MjmlValue
+    }
+  };
 </script>
 
 <style>
-li {
-  list-style: none;
-  text-align: right;
-  padding-right: 1em;
-}
+  li {
+    list-style: none;
+    text-align: right;
+    padding-right: 1em;
+  }
 </style>
