@@ -1,5 +1,5 @@
 <template>
-    <div class="row">
+    <div class="row mw-100">
         <div class="col-sm-4 sidebar pt-5">
             <div class="section" id="mj-components">
                 <h3>Components</h3>
