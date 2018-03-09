@@ -41,7 +41,7 @@
                 <li v-for="(value, key, index) in propObj" :key="key" class="green" v-if="value && index > 26 && index <= 34">{{ key }}</li>
             </ul>
           </div>
-        <div class="col-sm-4 mj-attr-list">
+        <div class="col-sm-5 mj-attr-list">
             <h4>Text</h4>
             <ul>
                 <li v-for="(value, key, index) in propObj" :key="key" class="green" v-if="value && index > 16 && index <= 26">{{ key }}</li>
